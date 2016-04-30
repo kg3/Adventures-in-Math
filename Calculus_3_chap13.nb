@@ -1,0 +1,276 @@
+
+Clear[r, v, s, at, an, g, h, t]
+(* http://interactmath.com/PlayerPractice.aspx?bookId=91818&chapterId=\
+14&sectionId=5&exerciseId=1&type=3 *)
+r[t_] = {m Cos[t], m Sin[t], n t};
+at = r''[t].r'[t]/Sqrt[r'[t].r'[t]]
+an = FullSimplify[
+   Sqrt[Cross[r''[t], r'[t]].Cross[r''[t], r'[t]]]/
+    Sqrt[r'[t].r'[t]]];
+PowerExpand[an]
+
+Clear[T, Nt, Ntr, B, r, V, VA, VAp, Tt, Bb, VAc, p]
+T = {Sech[t/p], Tanh[t/p], 0};
+Nt = {-Tanh[t/p], Sech[t/p], 0};
+r[t_] = {dCosh[t/d], t, d};
+V = r'[t];
+VA = r''[t];
+VAp = r'''[t];
+B = Cross[T, Nt] // FullSimplify
+MatrixForm[{V, VA, VAp}]; // FullSimplify
+VAc = FullSimplify[Cross[V, VA]]; 
+Tt = FullSimplify[Det[{V, VA, VAp}]] ;
+Bb = FullSimplify[VAc[[1]]^2 + VAc[[2]]^2 + VAc[[3]]^2];
+Tt/Bb
+
+Clear[r, v, s, at, an, ts, t]
+r[t_] = {5 t^2, 5 t + (5/3) t^3, 5 t - (5/3) t^3};
+ts = 0;
+r'[t];
+r''[t];
+at = r''[t].r'[t]/Sqrt[r'[t].r'[t]];
+an = FullSimplify[
+   Sqrt[Cross[r''[t], r'[t]].Cross[r''[t], r'[t]]]/
+    Sqrt[r'[t].r'[t]]];
+{at, an} /. t -> ts
+
+Clear[theta, r, v, a, V, A]
+(* use the symbols *)
+r[\[Theta]_] = 2 E^(a \[Theta]);
+theta = 3;
+{r'[\[Theta]]*theta, r[\[Theta]]*theta} // FullSimplify
+{(r''[\[Theta]]*theta^2 - r[\[Theta]]*theta^2) , (r[\[Theta]]*0 + 
+    2*(theta*r'[\[Theta]])*theta)} // FullSimplify
+    
+Clear[r, T, ts, \[Kappa], t, a]
+r[t_] := {-8 E^t Cos[t], -8 E^t Sin[t], 7};
+(* 1/cosh = sech \
+sinh/cosh = tanh.....Answer That way *)
+FullSimplify[
+ TrigFactor[r'[t]/Sqrt[Simplify[r'[t].r'[t]]]]](*/. t\[Rule] 1*)  
+Clear[t, T]
+T[t_] = FullSimplify[TrigFactor[r'[t]/Sqrt[Simplify[r'[t].r'[t]]] ]];
+(* one side is negative *)
+FullSimplify[
+ TrigFactor[D[r'[t]/Sqrt[Simplify[r'[t].r'[t]]], t]]]
+(* eliminate square root manually *)
+\[Kappa] = 
+ FullSimplify[
+   TrigFactor[Sqrt[Simplify[T'[t].T'[t]]/Simplify[r'[t].r'[t]]]]] // 
+  FullSimplify
+
+
+Clear[dr, r, dri, c, Cs, ans]
+(*fixed*)
+dr = {-5 t, 5 t, -5};
+r = {2, 3, 6};
+init = 0                      (* r(init) = equation *);
+dri = Integrate[dr, t];
+Cs = {Solve[dri[[1]] + c == r[[1]] , c] /. t -> init,
+   Solve[dri[[2]] + c == r[[2]], c] /. t -> init,
+   Solve[dri[[3]] + c == r[[3]], c] /. t -> init};
+(*ans = {dri[[1]]+c /. Cs[[1]],dri[[2]]+c /. Cs[[2]],dri[[3]]+r[[3]] \
++c /. Cs[[3]]}*)
+ans = {dri[[1]] + c /. Cs[[1]], 
+   dri[[2]] + c /. Cs[[2]], dri[[3]] + r[[3]]}  // FullSimplify
+
+
+Clear[x, y, z, X, Y, v, DX, DY, r, velocity, acceleration]
+r = {E^t, (6/25) E^(2 t)};
+time = Log[5];
+X = Solve[x == r[[1]], t];
+y = r[[2]] /. X[[1]][[1]] // Simplify
+DX = D[r[[1]], t];
+DY = D[r[[2]], t];
+velocity = {DX, DY} /. t -> time
+accleration = D[{DX, DY}, t] /. t -> time
+
+Clear[r, T, ts, \[Kappa], t, dT]
+r[t_] := {7 t + 9, 4 - t^7};
+(* http://interactmath.com/PlayerPractice.aspx?bookId=91818&chapterId=\
+14&sectionId=4&exerciseId=3&type=3 *)
+T = r'[t]/Sqrt[Simplify[r'[t].r'[t]]]
+dT = D[T, t] // Simplify
+
+sqT = dT^2 // Simplify;
+sqRT = Sqrt[sqT[[1]] + sqT[[2]]] ;
+
+{dT[[1]]/sqRT, dT[[2]]/sqRT} // FullSimplify    
+
+D[T, t]/Sqrt[Simplify[D[T, t].D[T, t]]] 
+(* eliminate square root manually 1/7t *)
+\[Kappa] = 
+ Sqrt[Simplify[T'[t].T'[t]] // Simplify[r'[t].r'[t]]] // FullSimplify
+ 
+Clear[dr, r, dri, c, Cs, ans]
+(*fixed*)
+dr = {3 (t + 1)^(1/2), 3 E^-t, 1/(t + 1)};
+r = {0, 0, 1};
+dri = Integrate[dr, t];
+Cs = {Solve[dri[[1]] + c == 0, c] /. t -> r[[1]],
+   Solve[dri[[2]] + c == 0, c] /. t -> r[[2]],
+   Solve[dri[[3]] + c == 0, c] /. t -> r[[3]]};
+ans = {dri[[1]] + c /. Cs[[1]], dri[[2]] + c /. Cs[[2]], 
+  dri[[3]] + r[[3]]}
+
+
+Clear[T, Nt, Ntr, B, r, V, VA, VAp, Tt, Bb, VAc]
+(*  http://interactmath.com/PlayerPractice.aspx?bookId=91818&\
+chapterId=14&sectionId=5&exerciseId=11&type=3 *)
+{0, 0, 1}
+0
+T = {(Cos[t] - Sin[t])/Sqrt[2], (-Cos[t] - Sin[t])/Sqrt[2], 0};
+Nt = {(-Cos[t] - Sin[t])/Sqrt[2], (Cos[t] - Sin[t])/Sqrt[2], 0};
+r[t_] = {4 E^t Cos[t], 4 E^t Sin[t], 3};
+V = r'[t]; VA = r''[t]; VAp = r'''[t];
+B = Cross[T, Nt] // FullSimplify                  
+MatrixForm[{V, VA, VAp}]; // FullSimplify
+VAc = FullSimplify[Cross[V, VA]]; 
+Tt = FullSimplify[Det[{V, VA, VAp}]] ;
+Bb = FullSimplify[VAc[[1]]^2 + VAc[[2]]^2 + VAc[[3]]^2];
+Tt/Bb                        ;
+
+
+Clear[v, a, b]
+v = {4 Cos[t], 6 + 6 Sin[t], Sec[t]^2};
+ a = -Pi/3 ;
+b = Pi/3;
+Integrate[v, {t, a, b}]
+
+
+Clear[r, t, ts, Dv, v, s, Alength]
+r[t_] := {E^t Cos[t], E^t Sin[t], E^t};
+ts = {-Log[4], 0};
+Dv = Simplify[r'[t], Element[t, Reals], 
+   Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+(* arc length parameter *)
+v = 
+ Sqrt[Dv[[1]]^2 + Dv[[2]]^2 + Dv[[3]]^2] // FullSimplify
+Simplify[r'[t][[1]] + r'[t][[2]] + r'[t][[3]], Element[t, Reals], 
+  Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+(* arc length of portion *)
+Integrate[
+ Norm[r'[t]], {t, ts[[1]], ts[[2]]}] 
+(* Fix into this form , last first with minus, same coefficient*)
+(* \
+4Sqrt[3]\[ExponentialE]^t-4Sqrt[3]*)
+
+
+Clear[v, a, b, t]
+(* http://interactmath.com/PlayerPractice.aspx?bookId=91818&chapterId=\
+14&sectionId=2&exerciseId=7&type=3 *)
+v = {(8 t E ^( 8 t))^2, 8 E^(-9 t), 2};
+ a = 0 ;
+b = 1;
+Integrate[v, {t, a, b}] // FullSimplify
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(\((v)\) \
+\[DifferentialD]t\)\)
+
+
+Clear[theta, r, v, a, V, A, t, \[Theta]]
+(* fixed *)
+r[\[Theta]_] = 4 Cos[2 t];
+theta = 5 t;
+dTheta = D[theta, t];
+dR = D[r[\[Theta]], t];
+{dR, r[\[Theta]]*dTheta}
+ddTheta = D[dTheta, t];
+ddR = D[dR, t];
+{ddR - r[\[Theta]]*dTheta^2, r[\[Theta]]*ddTheta + 2 (dR*dTheta)}
+
+
+Clear[r, t, pos, DV, time, DA, x, y, z]
+r = {Log[t/3], (t - 3)/(t + 4), t Log[t/3]};
+time = 3;
+pos = r /. t -> time;
+(* Velocity *)
+DV = {D[r[[1]], t], D[r[[2]], t], D[r[[3]], t]} ;
+(* Acceleration *)
+
+DA = {D[DV[[1]], t], D[DV[[2]], t], D[DV[[3]], t]};
+vel = DV /. t -> time;
+x = pos[[1]] + vel[[1]] t
+y = pos[[2]] + vel[[2]] t
+z = pos[[3]] + vel[[3]] t
+
+
+
+Clear[r, t, x, y, circ, DV, time, DA, DA1, DV1, DA2, DV2, size, \
+graph1, graph2, graph3]
+(* http://interactmath.com/PlayerPractice.aspx?bookId=91818&chapterId=\
+14&sectionId=1&exerciseId=7&type=3*)
+r = {t - Sin[t], 1 - Cos[t]};
+time = {t - Sin[t], 1 - Cos[t]};
+size = 2 Pi;
+DV = {D[r[[1]], t], D[r[[2]], t]};
+DA = {D[DV[[1]], t], D[DV[[2]], t]};
+(*Velocity At Function Vector *)
+DV1 = DV /. t -> time[[1]]
+(* Acceleration At Function Vector *)
+DA1 = DA /. t -> time[[1]]
+(*Velocity At Function Vector *)
+DV2 = DV /. t -> time[[2]]
+(* Acceleration At Function Vector *)
+DA2 = DA /. t -> time[[2]]
+graph1 = ParametricPlot[{DA, DA1, DV1, DV2, DA2}, {t, -size, size}];
+graph2 = VectorPlot[{DA1, DV1}, {x, -size, size}, {y, -size, size}, 
+   VectorPoints -> {DA1, DV1}, VectorScale -> .25, 
+   Epilog -> {Red, PointSize[Medium], Point[{DA1, DV1}]}];
+graph3 = VectorPlot[{DA2, DV2}, {x, -size, size}, {y, -size, size}, 
+   VectorPoints -> {DA2, DV2}, VectorScale -> .25, 
+   Epilog -> {Red, PointSize[Medium], Point[{DA2, DV2}]}];
+GraphicsRow[{Show[graph1, graph2, graph3, Axes -> True, 
+   AxesLabel -> {"X", "Y", "Z"}]}, ImageSize -> 300]
+   
+
+
+Clear[r, t, ts, Dv, V]
+r[t_] := {2 t Cos[t], 2 t Sin[t], ((4 Sqrt[2])/3) t^(3/2)};
+ts = {0, Pi};
+Dv = Simplify[r'[t], Element[t, Reals], 
+   Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+(* use signs to answer *)
+
+V = Simplify[Norm[r'[t]], Element[t, Reals], 
+   Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+Dv/V // FullSimplify
+Integrate[Norm[r'[t]], {t, ts[[1]], ts[[2]]}]
+
+
+
+
+Clear[r, v0, theta, t]
+v0 = 860*.001;
+theta = 60 \[Degree];
+r = 24;
+Solve[r == (v0*Cos[theta]) t, t]
+
+
+
+Clear[r, t, ts, Dv, V]
+r[t_] := {t, 0, (2/3) t^(3/2)};
+ts = {0, 5};
+Dv = Simplify[r'[t], Element[t, Reals], 
+   Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+(* use signs to answer *)
+
+V = Simplify[Norm[r'[t]], Element[t, Reals], 
+   Assumptions -> {ts[[1]] <= t <= ts[[2]]}];
+Dv/V // FullSimplify
+Integrate[Norm[r'[t]], {t, ts[[1]], ts[[2]]}] // FullSimplify
+
+
+Clear[r, t, DV, time, DA, DA1, DV1]
+r = {Cos[t], 3 Sin[t], 3 t};
+time = {0};
+(*Velocity At Function Vector *)
+DV = {D[r[[1]], t], D[r[[2]], t], 
+  D[r[[3]], t]}
+DV1 = DV /. t -> time[[1]];
+(* Acceleration At Function Vector *)
+DA = {D[DV[[1]], t], 
+  D[DV[[2]], t], D[DV[[3]], t]}
+DA1 = DA /. t -> time[[1]];
+SqDV1 = Sqrt[DV1[[1]]^2 + DV1[[2]]^2 + DV1[[3]]^2]
+DV1/SqDV1
