@@ -1,0 +1,225 @@
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(\(-Pi\)/3\), \(Pi/3\)]\(4  
+  Pi \((1 - Cos[x])\) \[DifferentialD]x\)\)
+  N[-4 Sqrt[3] \[Pi] + (8 \[Pi]^2)/3]
+  
+
+
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(Pi \((1 - 
+     x^2)\) \[DifferentialD]x\)\) // FullSimplify
+     
+
+Volume of a solid region Pi^2
+R[x] = number  
+r[x] = equation
+A (x) = 2 Pi*(Shell Radius)*(Shell Height)
+A[x] = Pi[R (x)^2] - Pi[r (x)^2] = Pi {[R (x)]^2 - [r (x)]^2}
+V = \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(A \((x)\) \
+\[DifferentialD]x\)\)
+Plot[{x^2/4, 1, 2, -1}, {x, 0, 3}, GridLines -> {{-2, 2}, None}, 
+ GridLinesStyle -> Dashed]
+Plot[{x^2/4, -x^2/4 + 2, x^2/4 - 2, -x^2/4, 1, -1}, {x, 0, 2.1}, 
+ GridLines -> {{-2, 2}, None}, GridLinesStyle -> Dashed]
+Solve[1 == x^2/4, x]
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(2  
+     Pi \((\((y - \((x^2/4)\))\)^2)\) \[DifferentialD]x\)\)  /. 
+   a -> 0 /. b -> 2 /. y -> 1
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(2  
+     Pi \((\((y - \((x^2/4)\))\)^2)\) \[DifferentialD]x\)\)  /. 
+   a -> 0 /. b -> 2 /. y -> -1
+
+
+
+Solve[(Abs[x]/2) == 3, x]
+Plot[{Abs[x]/2, 3}, {x, -6, 6}]
+Solve[\!\(TraditionalForm\`\((\(-x\)/2)\) == y\), x]
+Solve[(x/2) == y, x]
+Solve[2 y - (-2 y), y]
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(3\)]\(2  
+  Pi \((y)\) \((4  y)\) \[DifferentialD]y\)\)
+
+
+Plot[30 Abs[y^2 - y^3], {y, 0, 1}]
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(2  
+  Pi \((y)\) \((30  Abs[y^2 - y^3])\) \[DifferentialD]y\)\)
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(2  
+  Pi \((1 - y)\) \((30  Abs[y^2 - y^3])\) \[DifferentialD]y\)\)
+
+
+
+L = \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(
+\*SqrtBox[\(1 + \(\([\)\(f' \((x)\)\)\(]\)\)^2\)] \[DifferentialD]x\)\)
+
+Plot[(2/3) (x^2 + 1)^(3/2), {x, 0, 6}]
+\!\(
+\*SubscriptBox[\(\[PartialD]\), \(x\)]\((\((2/
+     3)\) \((x^2 + 1)\)^\((3/2)\))\)\)
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(6\)]\(\((
+\*SqrtBox[\(1 + \((2\ x\ 
+\*SqrtBox[\(1 + 
+\*SuperscriptBox[\(x\), \(2\)]\)])\)^2\)])\) \[DifferentialD]x\)\) // \
+FullSimplify
+
+
+
+
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(3\), \(5\)]\(\((
+\*SqrtBox[\(1 + \((\(-
+\*FractionBox[\(3\), \(4\ 
+\*SuperscriptBox[\(y\), \(2\)]\)]\) + 
+\*FractionBox[
+SuperscriptBox[\(y\), \(2\)], \(3\)])\)^2\)])\) \[DifferentialD]y\)\) \
+// FullSimplify
+
+
+
+S = \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(2  \[Pi]*f \((x)\) 
+\*SqrtBox[\(1 + \((f' \((x)\))\)^2\)] \[DifferentialD]x\)\)
+D[(1/4) x, x]
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(5\)]\(2  
+   Pi*\((1/4)\) x 
+\*SqrtBox[\(1 + \((
+\*FractionBox[\(1\), \(4\)])\)^2\)] \[DifferentialD]x\)\) // \
+FullSimplify
+N[(25 Sqrt[17] \[Pi])/16]
+
+
+
+
+D[Sqrt[2 x - x^2], x]
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(3/4\), \(7/4\)]\(2  Pi \((\((
+\*SqrtBox[\(2  x - x^2\)])\)*
+\*SqrtBox[\(1 + \((
+\*FractionBox[\(2 - 2\ x\), \(2\ 
+\*SqrtBox[\(2\ x - 
+\*SuperscriptBox[\(x\), \(2\)]\)]\)])\)^2\)])\) \[DifferentialD]x\)\)
+
+
+D[2 Sqrt[1 - y], y]
+Integrate[
+ 2 Pi (2 Sqrt[1 - y])*Sqrt[1 + (-(1/Sqrt[1 - y]))^2], {y, 0, (3/4)}] 
+Integrate[
+ 2 Pi (2 Sqrt[1 - y]) Sqrt[1 + D[2 Sqrt[1 - y], y]^2], {y, 0, (3/4)}]
+ 
+ 
+ 
+ 
+Plot[{2 x^2, 18}, {x, -5, 5}, GridLines -> {{-3, 3}, None}, 
+ GridLinesStyle -> Dashed]
+X = 0
+Subscript[M, x]/ M = y or center of Mass
+(* Subscript[M, x] = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(-3\), \(3\)]\(\((\((18 + 
+      2  x^2)\)/
+    2)\) \((\[Delta])\) \((18 - \((2  x^2)\))\) \[DifferentialD]x\)\)
+(* M = *) \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(-3\), \(3\)]\(\((\[Delta])\) \
+\((18 - \((2  x^2)\))\) \[DifferentialD]x\)\)
+
+
+
+
+x = Subscript[M, y]/ M
+y = Subscript[M, x]/ M
+L = (5x-x^2) - (-5x)
+(Overscript[x, ~],Overscript[y, ~]) = (x, ((5x-x^2)+(-5x))/2) = (x, (-x^2/2))
+dm = (10x-x^2) \[Delta] \[DifferentialD]x
+y dm = (-x^2/2)(10x-x^2) \[Delta] \[DifferentialD]x
+x dm = (x)(10x-x^2) \[Delta] \[DifferentialD]x
+(Overscript[x, _],Overscript[y, _]) = (Subscript[M, y]/ M , Subscript[M, x]/ M)
+
+(* a,b *)Solve[5 x - x^2 == -5 x, x]
+Plot[{5 x - x^2, -5 x, -x^2/2}, {x, -5, 12}, 
+ GridLines -> {{10}, None}, GridLinesStyle -> Dashed]
+(* L = *)(5 x - x^2) - (-5 x)
+(* (x,y) *)((5 x - x^2) + (-5 x))/2
+(* M = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(10\)]\(\((10  x - 
+    x^2)\)\ \[Delta] \(\(\[DifferentialD]\)\(x\)\(\ \)\)\)\)
+(* Subscript[M, x] = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(10\)]\(\((\(-x^2\)/
+    2)\) \((10  x - x^2)\)\ \[Delta] \[DifferentialD]x\)\)
+(* Subscript[M, y]= *) \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(10\)]\(\((x)\) \((10  
+     x - x^2)\)\ \[Delta] \[DifferentialD]x\)\)
+(* My / M *) ((2500 \[Delta])/3)/((500 \[Delta])/3) // FullSimplify
+(* Mx / M *) (-2500 \[Delta])/((500 \[Delta])/3) // FullSimplify
+
+
+
+
+
+Plot[{(3/2) Cos[x]}, {x, -Pi/8, Pi/8}, 
+ GridLines -> {{(Pi/13), (Pi/11)}, None}, GridLinesStyle -> Dashed]
+(* (x,y) *)(((3/2) Cos[x]))/2
+(* Subscript[M, x] = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(\(-Pi\)/3\), \(Pi/
+   3\)]\(\((\[Delta]\ 
+\*FractionBox[\(3\ Cos[x]\), \(4\)])\)*\((\((3/2)\) Cos[
+     x])\) \(\(\[DifferentialD]\)\(x\)\(\ \)\)\)\)
+(* M = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(\(-Pi\)/3\), \(Pi/
+    3\)]\(\((\[Delta] \((3/2)\) Cos[
+      x])\) \[DifferentialD]x\)\)  // FullSimplify
+(3/32 (3 Sqrt[3] + 4 \[Pi]) \[Delta])/((3 Sqrt[3] \[Delta])/
+   2) // FullSimplify
+N[1/48 (9 + 4 Sqrt[3] \[Pi])]
+N[(((Pi/2) + 1) \[Delta])/(2 Sqrt[2] \[Delta])]
+
+
+
+
+
+Plot[{3/(1 + x^2), -3/(1 + x^2)}, {x, 0, 1}, 
+ GridLines -> {{.4, .5}, None}, GridLinesStyle -> Dashed]
+(* Vertical Strip *) 2*(3/(1 + x^2))
+(*Subscript[M, y]*)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[Delta]x \((
+\*FractionBox[\(6\), \(1 + 
+\*SuperscriptBox[\(x\), \(2\)]\)])\) \[DifferentialD]x\)\)
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[Delta] \((
+\*FractionBox[\(6\), \(1 + 
+\*SuperscriptBox[\(x\), \(2\)]\)])\) \[DifferentialD]x\)\)
+((3 \[Pi] \[Delta])/2)/((3 \[Pi] \[Delta])/2)
+(\[Delta] (3 Ln[2]))/(3 \[Delta]Pi/2)
+
+
+
+
+
+Plot[{6/Sqrt[x], -6/Sqrt[x]}, {x, 0, 5}, GridLines -> {{1, 4}, None}, 
+ GridLinesStyle -> Dashed]
+(*Shell Height*)2*(6/Sqrt[x])
+(* V = *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(a\), \(b\)]\(2  Pi*x \((
+\*FractionBox[\(12\), 
+SqrtBox[\(x\)]])\) \[DifferentialD]x\)\) /. a -> 1 /. b -> 4
+(* My *) \!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(1\), \(4\)]\(x \((1/x)\) 
+\*FractionBox[\(12\), 
+SqrtBox[\(x\)]] \[DifferentialD]x\)\)
+(* M *)\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(1\), \(4\)]\(\((1/x)\) 
+\*FractionBox[\(12\), 
+SqrtBox[\(x\)]] \[DifferentialD]x\)\)
+(* My/M *)24/12
+
+
+
+
+
+
