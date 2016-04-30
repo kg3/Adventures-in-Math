@@ -1,7 +1,7 @@
-# Calculus
+## Calculus
 some pivotal moments in my journey through calculus where I needed Mathematica
 
-# Linear Algebra
+## Linear Algebra
   (CS application: artificial intelligence) 
   A popular task in artificial intelligence is to classify things; popular choices are images and documents. Many methods for performing classification have been developed; for this we will use the SVD of a matrix.
 1. The process is as follows:
